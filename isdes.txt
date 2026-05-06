@@ -1,0 +1,12 @@
+from Crypto.Cipher import DES 
+from Crypto.Util.Padding import pad, unpad 
+key = b'DESKEY01' 
+plaintext = input("Enter Plain Text: ").encode()
+cipher = DES.new(key, DES.MODE_ECB)
+ 
+encrypted = cipher.encrypt(pad(plaintext, 8)) 
+print("Encrypted:", encrypted) 
+
+decrypted = unpad(cipher.decrypt(encrypted), 8) 
+print("Decrypted:", decrypted.decode())
+
